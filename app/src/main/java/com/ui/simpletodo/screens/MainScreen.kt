@@ -59,8 +59,3 @@ fun MainScreen(){
     }
 }
 
-@Preview
-@Composable
-fun mainPreview(){
-    MainScreen()
-}

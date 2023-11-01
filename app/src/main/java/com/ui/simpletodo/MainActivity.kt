@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.ui.simpletodo.components.BottomSheetForm
 import com.ui.simpletodo.screens.MainScreen
 import com.ui.simpletodo.ui.theme.SimpleToDoTheme
 
@@ -63,7 +64,7 @@ class MainActivity : ComponentActivity() {
                         MainScreen()
                         if (isOpen){
                             ModalBottomSheet(sheetState =sheetState ,onDismissRequest = { isOpen = false }) {
-                                Text(text = "Hello")
+                                BottomSheetForm()
                             }
                         }
                     }
