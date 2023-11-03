@@ -1,5 +1,6 @@
 package com.ui.simpletodo.screens
 
+import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -12,6 +13,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -22,12 +24,15 @@ import androidx.compose.ui.unit.sp
 import com.ui.simpletodo.components.TaskRow
 import com.ui.simpletodo.data.gettask
 import com.ui.simpletodo.data.Task
+import com.ui.simpletodo.data.TaskViewModel
 
 
 @Composable
-fun MainScreen(){
-    var tasklist:List<Task> = gettask()
-    Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp)) {
+fun MainScreen(taskViewModel: TaskViewModel,context: Context){
+
+    val taskList = taskViewModel.allTask.observeAsState(listOf()).value
+
+    Column(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 16.dp)) {
         Column (modifier = Modifier.fillMaxHeight(.15f).fillMaxWidth(), verticalArrangement = Arrangement.SpaceEvenly){
             Column() {
                 Text("March 9, 2020", fontSize = 32.sp, fontWeight = FontWeight.Bold)
@@ -41,21 +46,24 @@ fun MainScreen(){
         Column(modifier = Modifier.fillMaxHeight(.5f).fillMaxWidth()) {
             Text(text = "Incomplete", fontSize = 18.sp, fontWeight = FontWeight.Bold)
             LazyColumn(contentPadding = PaddingValues(horizontal = 8.dp)){
-                items(tasklist){
-                    task->
-                    TaskRow(task = task)
+                items(taskList){ task->
+//                    if (!task.isCompleted()) {
+                        TaskRow(task = task,taskViewModel)
+//                    }
                 }
             }
         }
-        Column(modifier = Modifier.fillMaxHeight().fillMaxWidth()) {
-            Text(text = "Completed", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-            LazyColumn(contentPadding = PaddingValues(horizontal = 8.dp)){
-                items(tasklist){
-                        task->
-                    TaskRow(task = task)
-                }
-            }
-        }
+//        Column(modifier = Modifier.fillMaxHeight().fillMaxWidth()) {
+//            Text(text = "Completed", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+//            LazyColumn(contentPadding = PaddingValues(horizontal = 8.dp)){
+//                items(taskList){
+//                        task->
+//                    if(task.isCompleted()){
+//                        TaskRow(task = task,taskViewModel)
+//                    }
+//                }
+//            }
+//        }
     }
 }
 
