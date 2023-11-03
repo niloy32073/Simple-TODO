@@ -21,12 +21,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ui.simpletodo.components.TaskRow
 import com.ui.simpletodo.data.gettask
-import com.ui.simpletodo.data.task
+import com.ui.simpletodo.data.Task
 
 
 @Composable
 fun MainScreen(){
-    var tasklist:List<task> = gettask()
+    var tasklist:List<Task> = gettask()
     Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp)) {
         Column (modifier = Modifier.fillMaxHeight(.15f).fillMaxWidth(), verticalArrangement = Arrangement.SpaceEvenly){
             Column() {

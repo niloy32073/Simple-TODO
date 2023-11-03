@@ -10,10 +10,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import com.ui.simpletodo.data.task
+import com.ui.simpletodo.data.Task
 
 @Composable
-fun TaskRow(task: task){
+fun TaskRow(task: Task){
     var tittle = task.tittle
     var category = task.category
     var status = task.status
