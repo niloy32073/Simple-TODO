@@ -2,10 +2,14 @@ package com.ui.simpletodo
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -16,6 +20,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,6 +29,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -33,6 +39,7 @@ import com.ui.simpletodo.screens.MainScreen
 import com.ui.simpletodo.ui.theme.SimpleToDoTheme
 
 class MainActivity : ComponentActivity() {
+    @RequiresApi(Build.VERSION_CODES.O)
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,9 +69,12 @@ class MainActivity : ComponentActivity() {
                                 onClick = {
                                     isOpen = true
                                 },
-                                containerColor = Color.Blue,
+                                containerColor = Color(0xFFA3A2A2),
                                 content = {
-                                Icon(imageVector = Icons.Filled.Add, contentDescription = "Add")
+                                    Row(modifier = Modifier.padding(10.dp)) {
+                                        Icon(imageVector = Icons.Filled.Add, contentDescription = "Add")
+                                        Text(text = "Add Task")
+                                    }
                             })
                         }
                     ){

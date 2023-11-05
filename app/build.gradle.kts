@@ -86,4 +86,7 @@ dependencies {
 
     //Livedata
     implementation ("androidx.compose.runtime:runtime-livedata:1.6.0-alpha08")
+
+    //Swipe Action
+    implementation ("me.saket.swipe:swipe:1.2.0")
 }

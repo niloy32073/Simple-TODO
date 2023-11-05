@@ -6,6 +6,7 @@ class TaskRepository(
     private val taskDao: TaskDao
 ) {
     val allTask: LiveData<List<Task>> = taskDao.getAll()
+    //var inComplete = taskDao.count()
 
     suspend fun insertTask(task: Task){
         taskDao.insert(task)

@@ -44,7 +44,8 @@ fun BottomSheetForm(taskViewModel: TaskViewModel, context: Context, sheetState: 
             taskViewModel.inserTask(Task(
                 id = null,
                 title = title,
-                date = 50
+                date = 50,
+                details = details
                 )
             )
            // scope.launch { sheetState.hide() }

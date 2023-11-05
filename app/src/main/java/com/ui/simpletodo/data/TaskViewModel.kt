@@ -15,6 +15,7 @@ class TaskViewModel(application: Application): AndroidViewModel(application) {
         allTask = repository.allTask
     }
 
+    //var getInCompleteCount = repository.inComplete
     fun inserTask(task: Task){
         viewModelScope.launch { repository.insertTask(task) }
     }

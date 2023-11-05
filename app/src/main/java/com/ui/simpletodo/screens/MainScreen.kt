@@ -1,6 +1,8 @@
 package com.ui.simpletodo.screens
 
 import android.content.Context
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -22,15 +24,22 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ui.simpletodo.components.TaskList
-import com.ui.simpletodo.data.gettask
 import com.ui.simpletodo.data.Task
 import com.ui.simpletodo.data.TaskViewModel
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.Date
 
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun MainScreen(taskViewModel: TaskViewModel,context: Context){
 
     val taskList = taskViewModel.allTask.observeAsState(listOf()).value
+
+    val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+    val current = LocalDate.now().format(formatter)
+    //var incompleteCount = taskViewModel.getInCompleteCount
 
     Column(modifier = Modifier
         .fillMaxWidth()
@@ -39,10 +48,10 @@ fun MainScreen(taskViewModel: TaskViewModel,context: Context){
             .fillMaxHeight(.15f)
             .fillMaxWidth(), verticalArrangement = Arrangement.SpaceEvenly){
             Column() {
-                Text("March 9, 2020", fontSize = 32.sp, fontWeight = FontWeight.Bold)
+                Text(current.toString(), fontSize = 32.sp, fontWeight = FontWeight.Bold)
             }
             Column (){
-                Text("5 Completed, 5 Incomplete",fontWeight = FontWeight.Bold)
+                Text("Total Incomplete:  ",fontWeight = FontWeight.Bold)
             }
             Divider(color = Color.Gray, modifier = Modifier
                 .fillMaxWidth()

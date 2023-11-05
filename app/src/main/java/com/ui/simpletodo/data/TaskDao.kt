@@ -21,4 +21,7 @@ interface TaskDao {
     suspend fun update(task: Task)
     @Query("DELETE FROM task_table")
     suspend fun deleteAll()
+
+    @Query("SELECT COUNT(*) FROM task_table ")
+    fun count(): Int
 }

@@ -7,10 +7,11 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "task_table")
 data class Task(
     @PrimaryKey(autoGenerate = true) val id:Int?,
-    @ColumnInfo("title")val title:String,
-    @ColumnInfo("category")val category:String = "Default",
-    @ColumnInfo("date")val date: Int,
-    @ColumnInfo("status") var completed: String = (false).toString()
+    @ColumnInfo("title") var title:String,
+    @ColumnInfo("details") var details: String,
+    @ColumnInfo("category") var category:String = "Default",
+    @ColumnInfo("date") var date: Int,
+    @ColumnInfo("completed") var completed: String = (false).toString()
 ){
     fun isCompleted(): Boolean = if(completed == (false).toString()) false else true
 }
