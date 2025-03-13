@@ -64,6 +64,7 @@ class MainActivity : ComponentActivity() {
                         MainScreen()
                         if (isOpen){
                             // test code to know changes.
+                            // Test 2.
                             ModalBottomSheet(sheetState =sheetState ,onDismissRequest = { isOpen = false }) {
                                 BottomSheetForm()
                             }
